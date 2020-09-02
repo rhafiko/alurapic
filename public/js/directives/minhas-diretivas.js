@@ -30,4 +30,17 @@ angular
     ddo.templateUrl = "js/directives/minha-foto.html";
 
     return ddo;
+  })
+  .directive("botaoDanger", function() {
+    var ddo = {};
+
+    ddo.restrict = "E";
+
+    ddo.scope = {
+      nome: "@",
+      acao: "&"
+    };
+
+    ddo.templateUrl = "js/directives/botao-danger.html";
+    return ddo;
   });
