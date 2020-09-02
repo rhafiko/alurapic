@@ -1,15 +1,33 @@
-angular.module("minhasDiretivas", []).directive("meuPainel", function() {
-  var ddo = {};
+angular
+  .module("minhasDiretivas", [])
+  .directive("meuPainel", function() {
+    var ddo = {};
 
-  ddo.restrict = "AE";
+    ddo.restrict = "AE";
 
-  ddo.scope = {
-    titulo: "@"
-  };
+    ddo.scope = {
+      titulo: "@"
+    };
 
-  ddo.transclude = true;
+    ddo.transclude = true;
 
-  ddo.templateUrl = "js/directives/meu-painel.html";
+    ddo.templateUrl = "js/directives/meu-painel.html";
 
-  return ddo;
-});
+    return ddo;
+  })
+  .directive("minhaFoto", function() {
+    var ddo = {};
+
+    ddo.restrict = "AE";
+
+    ddo.scope = {
+      titulo: "@",
+      url: "@"
+    };
+
+    ddo.transclude = true;
+
+    ddo.templateUrl = "js/directives/minha-foto.html";
+
+    return ddo;
+  });
