@@ -31,6 +31,7 @@ angular
             if (retorno.inclusao) {
               $scope.foto = {};
             }
+            $scope.focado = true;
           })
           .catch(erro => {
             $scope.mensagem = erro.mensagem;
