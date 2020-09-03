@@ -1,6 +1,6 @@
 angular
   .module("alurapic")
-  .controller("FotosController", function($scope, recursoFoto) {
+  .controller("FotosController", function($scope, recursoFoto, remocaoDeFotos) {
     $scope.fotos = [];
     $scope.filtro = "";
     $scope.mensagem = "";
@@ -15,19 +15,15 @@ angular
     );
 
     $scope.remover = function(foto) {
-      recursoFoto.delete(
-        { fotoId: foto._id },
-        function() {
+      remocaoDeFotos
+        .remover(foto)
+        .then(retorno => {
           var indiceFoto = $scope.fotos.indexOf(foto);
           $scope.fotos.splice(indiceFoto, 1);
-          console.log("Foto " + foto.titulo + " foi removida com sucesso");
-          $scope.mensagem = "Foto " + foto.titulo + " foi removida com sucesso";
-        },
-        function(erro) {
-          console.log(erro);
-          console.log("Erro ao remover a foto" + foto.titulo);
-          $scope.mensagem = "Erro ao remover a foto" + foto.titulo;
-        }
-      );
+          $scope.mensagem = retorno.mensagem;
+        })
+        .catch(erro => {
+          $scope.mensagem = erro.mensagem;
+        });
     };
   });

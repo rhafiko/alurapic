@@ -52,4 +52,26 @@ angular
     };
 
     return servico;
+  })
+  .factory("remocaoDeFotos", function(recursoFoto, $q) {
+    var servico = {};
+    servico.remover = function(foto) {
+      return $q(function(resolve, reject) {
+        recursoFoto.delete(
+          { fotoId: foto._id },
+          function() {
+            resolve({
+              mensagem: "Foto " + foto.titulo + " foi removida com sucesso"
+            });
+          },
+          function(erro) {
+            console.log(erro);
+            reject({
+              mensagem: "Erro ao remover a foto" + foto.titulo
+            });
+          }
+        );
+      });
+    };
+    return servico;
   });
