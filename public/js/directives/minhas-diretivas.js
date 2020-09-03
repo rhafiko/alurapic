@@ -60,4 +60,17 @@ angular
     };
 
     return ddo;
+  })
+  .directive("meusTitulos", function() {
+    var ddo = {};
+    ddo.restrict = "E";
+    ddo.template = '<ul><li ng-repeat="titulo in titulos">{{titulo}}</li></ul>';
+    ddo.controller = function($scope, recursoFoto) {
+      recursoFoto.query(function(fotos) {
+        $scope.titulos = fotos.map(function(foto) {
+          return foto.titulo;
+        });
+      });
+    };
+    return ddo;
   });
