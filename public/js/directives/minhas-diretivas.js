@@ -1,6 +1,6 @@
 angular
   .module("minhasDiretivas", [])
-  .directive("meuPainel", function() {
+  .directive("meuPainel", () => {
     var ddo = {};
 
     ddo.restrict = "AE";
@@ -15,7 +15,7 @@ angular
 
     return ddo;
   })
-  .directive("minhaFoto", function() {
+  .directive("minhaFoto", () => {
     var ddo = {};
 
     ddo.restrict = "AE";
@@ -31,7 +31,7 @@ angular
 
     return ddo;
   })
-  .directive("botaoDanger", function() {
+  .directive("botaoDanger", () => {
     var ddo = {};
 
     ddo.restrict = "E";
@@ -44,7 +44,7 @@ angular
     ddo.templateUrl = "js/directives/botao-danger.html";
     return ddo;
   })
-  .directive("meuFocus", function() {
+  .directive("meuFocus", () => {
     var ddo = {};
 
     ddo.restrict = "A";
@@ -54,11 +54,8 @@ angular
     };
 
     ddo.link = function(scope, element) {
-      scope.$watch("focado", function() {
-        if (scope.focado) {
-          element[0].focus();
-          scope.focado = false;
-        }
+      scope.$on("fotoCadastrada", () => {
+        element[0].focus();
       });
     };
 
