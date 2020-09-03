@@ -1,2 +1,2 @@
 # alurapic
-Repository for Alura Angular course.
+Repository for Alura AngularJS course.
